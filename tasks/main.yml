@@ -71,13 +71,14 @@
   tags: vagrant
 
 - name: unarchive package
-  unarchive:
-    src: "{{ vagrant_download.dest }}"
-    dest: "/usr/local/bin"
-    remote_src: true
-    owner: "root"
-    group: "root"
-    mode: "0755"
+  shell: |
+    set -o pipefail
+    cd /usr/local/bin
+    unzip -j {{ vagrant_download.dest }} vagrant
+    chown -Rf root:root vagrant
+  args:
+    executable: "/bin/bash"
+    creates: "/usr/local/bin/vagrant"
   tags: vagrant
 
 - name: prepare files
