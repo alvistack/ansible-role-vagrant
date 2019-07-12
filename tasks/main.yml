@@ -57,6 +57,7 @@
     state: "{{ item.state | default('directory') }}"
   loop:
     - { dest: "/usr/local/bin" }
+    - { dest: "{{ vagrant_download.dest | dirname }}" }
   tags: vagrant
 
 - name: download archive
