@@ -75,7 +75,7 @@
   shell: |
     set -o pipefail
     cd /usr/local/bin
-    unzip -j {{ vagrant_download.dest }} vagrant
+    TMP_DIR="`mktemp -d`" && unzip -qq -j -d $TMP_DIR {{ vagrant_download.dest }} && mv $TMP_DIR/vagrant . && rm -rf $TMP_DIR
     chown -Rf root:root vagrant
   args:
     executable: "/bin/bash"
