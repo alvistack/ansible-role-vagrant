@@ -67,19 +67,18 @@
     checksum: "{{ item.checksum }}"
   loop:
     - "{{ vagrant_download }}"
-  register: result
-  until: result is succeeded
+  register: get_url_result
+  until: get_url_result is succeeded
   tags: vagrant
 
 - name: unarchive package
   shell: |
     set -o pipefail
     cd /usr/local/bin
-    unzip -j {{ vagrant_download.dest }} vagrant
-    chown -Rf root:root vagrant
+    TMP_DIR="`mktemp -d`" && unzip -qq -d $TMP_DIR {{ vagrant_download.dest }} && mv $TMP_DIR/vagrant . && rm -rf $TMP_DIR
   args:
     executable: "/bin/bash"
-    creates: "/usr/local/bin/vagrant"
+  when: get_url_result is changed
   tags: vagrant
 
 - name: prepare files
