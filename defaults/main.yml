@@ -15,7 +15,7 @@
 # limitations under the License.
 
 # Vagrant version.
-vagrant_version: "2.2.5"
+vagrant_version: "2.2.6"
 
 # Vagrant download details.
 vagrant_download: "{{ _vagrant_download[vagrant_version] }}"
