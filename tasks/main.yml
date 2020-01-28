@@ -78,6 +78,8 @@
     cd /usr/local/bin
     TMP_DIR="`mktemp -d`" \
       && unzip -qq -d $TMP_DIR {{ vagrant_download.dest }} \
+      && chown root:root $TMP_DIR/vagrant \
+      && chmod 0755 $TMP_DIR/vagrant \
       && mv $TMP_DIR/vagrant . \
       && rm -rf $TMP_DIR
   args:
