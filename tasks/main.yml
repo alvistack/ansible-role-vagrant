@@ -78,7 +78,7 @@
   shell: |
     set -o pipefail
     cd /usr/local/bin
-    TMP_DIR="`mktemp -d`" \
+    TMP_DIR="$(mktemp -d)" \
       && unzip -qq -d $TMP_DIR {{ vagrant_download.dest }} \
       && chown root:root $TMP_DIR/vagrant \
       && chmod 0755 $TMP_DIR/vagrant \
