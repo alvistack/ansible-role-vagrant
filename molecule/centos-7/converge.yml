@@ -17,6 +17,9 @@
 - hosts: all
   remote_user: root
   become: true
-  roles:
-    - role: python
-    - role: vagrant
+  tasks:
+    - include_role:
+        name: python
+
+    - include_role:
+        name: vagrant
