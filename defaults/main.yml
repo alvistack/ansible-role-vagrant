@@ -16,6 +16,3 @@
 
 # Vagrant version.
 vagrant_version: "2.2.7"
-
-# Vagrant download details.
-vagrant_download: "{{ _vagrant_download[vagrant_version] }}"
