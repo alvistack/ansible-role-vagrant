@@ -14,29 +14,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-galaxy_info:
-  role_name: vagrant
-  author: "Wong Hoi Sing Edison <hswong3i@pantarei-design.com>"
-  description: Ansible Role for Vagrant Installation
-  company: PantaRei Design
-  license: Apache-2.0
-  min_ansible_version: 2.9
-  platforms:
-    - name: Ubuntu
-      versions:
-        - focal
-        - eoan
-        - bionic
-    - name: Debian
-      versions:
-        - buster
-    - name: EL
-      versions:
-        - 8
-        - 7
-    - name: opensuse
-      versions:
-        - 15.1
-  galaxy_tags:
-    - system
-dependencies: []
+_apt:
+  "2.2.7":
+    - { state: "present", deb: "https://releases.hashicorp.com/vagrant/2.2.7/vagrant_2.2.7_x86_64.deb" }
