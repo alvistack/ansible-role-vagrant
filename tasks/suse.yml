@@ -26,3 +26,9 @@
   register: result
   until: result is succeeded
   tags: vagrant
+
+- name: rm /opt/vagrant/embedded/lib/libreadline.so.7
+  file:
+    path: "/opt/vagrant/embedded/lib/libreadline.so.7"
+    state: "absent"
+  tags: vagrant
