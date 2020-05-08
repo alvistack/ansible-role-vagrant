@@ -15,5 +15,4 @@
 # limitations under the License.
 
 _zypper:
-  "2.2.7":
-    - { state: "latest", name: "https://releases.hashicorp.com/vagrant/2.2.7/vagrant_2.2.7_x86_64.rpm" }
+  - { state: "latest", name: "https://releases.hashicorp.com/vagrant/2.2.9/vagrant_2.2.9_x86_64.rpm" }

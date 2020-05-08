@@ -22,7 +22,13 @@
     state: "{{ item.state }}"
     disable_gpg_check: true
     extra_args: "--allow-vendor-change"
-  loop: "{{ _zypper[vagrant_version] }}"
+  loop: "{{ _zypper }}"
   register: result
   until: result is succeeded
+  tags: vagrant
+
+- name: rm /opt/vagrant/embedded/lib/libreadline.so.7
+  file:
+    path: "/opt/vagrant/embedded/lib/libreadline.so.7"
+    state: "absent"
   tags: vagrant
