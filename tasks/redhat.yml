@@ -18,7 +18,7 @@
   yum:
     name: "{{ item.name }}"
     state: "{{ item.state }}"
-  loop: "{{ _yum[vagrant_version] }}"
+  loop: "{{ _yum }}"
   register: result
   until: result is succeeded
   tags: vagrant
