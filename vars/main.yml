@@ -13,27 +13,3 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-
-_apt:
-  "2.2.9":
-    - { state: "present", deb: "https://releases.hashicorp.com/vagrant/2.2.9/vagrant_2.2.9_x86_64.deb" }
-  "2.2.8":
-    - { state: "present", deb: "https://releases.hashicorp.com/vagrant/2.2.8/vagrant_2.2.8_x86_64.deb" }
-  "2.2.7":
-    - { state: "present", deb: "https://releases.hashicorp.com/vagrant/2.2.7/vagrant_2.2.7_x86_64.deb" }
-
-_yum:
-  "2.2.9":
-    - { state: "latest", name: "https://releases.hashicorp.com/vagrant/2.2.9/vagrant_2.2.9_x86_64.rpm" }
-  "2.2.8":
-    - { state: "latest", name: "https://releases.hashicorp.com/vagrant/2.2.8/vagrant_2.2.8_x86_64.rpm" }
-  "2.2.7":
-    - { state: "latest", name: "https://releases.hashicorp.com/vagrant/2.2.7/vagrant_2.2.7_x86_64.rpm" }
-
-_zypper:
-  "2.2.9":
-    - { state: "latest", name: "https://releases.hashicorp.com/vagrant/2.2.9/vagrant_2.2.9_x86_64.rpm" }
-  "2.2.8":
-    - { state: "latest", name: "https://releases.hashicorp.com/vagrant/2.2.8/vagrant_2.2.8_x86_64.rpm" }
-  "2.2.7":
-    - { state: "latest", name: "https://releases.hashicorp.com/vagrant/2.2.7/vagrant_2.2.7_x86_64.rpm" }
