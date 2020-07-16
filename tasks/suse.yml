@@ -22,7 +22,7 @@
     state: "{{ item.state }}"
     disable_gpg_check: true
     extra_args: "--allow-vendor-change"
-  loop: "{{ _zypper }}"
+  loop: "{{ _zypper[vagrant_version] }}"
   register: result
   until: result is succeeded
   tags: vagrant

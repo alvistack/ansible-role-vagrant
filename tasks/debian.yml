@@ -18,7 +18,7 @@
   apt:
     deb: "{{ item.deb }}"
     state: "{{ item.state }}"
-  loop: "{{ _apt }}"
+  loop: "{{ _apt[vagrant_version] }}"
   register: result
   until: result is succeeded
   tags: vagrant
