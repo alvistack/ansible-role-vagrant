@@ -30,5 +30,6 @@
 - name: rm /opt/vagrant/embedded/lib/libreadline.so.7
   file:
     path: "/opt/vagrant/embedded/lib/libreadline.so.7"
+    mode: "0644"
     state: "absent"
   tags: vagrant
