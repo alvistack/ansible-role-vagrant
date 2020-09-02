@@ -14,6 +14,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+_rpm_key:
+  - key: "https://keybase.io/hashicorp/pgp_keys.asc"
+    fingerprint: "91A6E7F85D05C65630BEF18951852D87348FFC4C"
+    state: "present"
+
 _zypper:
   "2.2.10":
     - { state: "latest", name: "https://releases.hashicorp.com/vagrant/2.2.10/vagrant_2.2.10_x86_64.rpm" }
