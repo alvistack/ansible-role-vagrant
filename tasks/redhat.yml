@@ -20,7 +20,6 @@
     state: "present"
   register: result
   until: result is succeeded
-  tags: vagrant
 
 - name: rpm --import
   rpm_key:
@@ -30,7 +29,6 @@
   loop: "{{ _rpm_key }}"
   register: result
   until: result is succeeded
-  tags: vagrant
 
 - name: yum install
   yum:
@@ -40,4 +38,3 @@
   loop: "{{ _yum[vagrant_version] }}"
   register: result
   until: result is succeeded
-  tags: vagrant
