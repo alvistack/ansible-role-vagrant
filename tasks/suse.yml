@@ -22,7 +22,6 @@
     state: "present"
   register: result
   until: result is succeeded
-  tags: vagrant
 
 - name: rpm --import
   vars:
@@ -34,7 +33,6 @@
   loop: "{{ _rpm_key }}"
   register: result
   until: result is succeeded
-  tags: vagrant
 
 - name: zypper install
   vars:
@@ -47,11 +45,9 @@
   loop: "{{ _zypper[vagrant_version] }}"
   register: result
   until: result is succeeded
-  tags: vagrant
 
 - name: rm /opt/vagrant/embedded/lib/libreadline.so.7
   file:
     path: "/opt/vagrant/embedded/lib/libreadline.so.7"
     mode: "0644"
     state: "absent"
-  tags: vagrant
