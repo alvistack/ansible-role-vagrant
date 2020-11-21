@@ -20,5 +20,5 @@ _apt_key:
     state: "present"
 
 _apt:
-  "2.2.13":
-    - { state: "present", deb: "https://releases.hashicorp.com/vagrant/2.2.13/vagrant_2.2.13_x86_64.deb" }
+  "2.2.14":
+    - { state: "present", deb: "https://releases.hashicorp.com/vagrant/2.2.14/vagrant_2.2.14_x86_64.deb" }

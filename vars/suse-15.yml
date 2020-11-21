@@ -20,5 +20,5 @@ _rpm_key:
     state: "present"
 
 _zypper:
-  "2.2.13":
-    - { state: "latest", name: "https://releases.hashicorp.com/vagrant/2.2.13/vagrant_2.2.13_x86_64.rpm" }
+  "2.2.14":
+    - { state: "latest", name: "https://releases.hashicorp.com/vagrant/2.2.14/vagrant_2.2.14_x86_64.rpm" }
