@@ -1,6 +1,6 @@
 # Ansible Role for Vagrant
 
-[![Travis](https://img.shields.io/travis/com/alvistack/ansible-role-vagrant.svg)](https://travis-ci.com/alvistack/ansible-role-vagrant)
+[![Gitlab pipeline status](https://img.shields.io/gitlab/pipeline/alvistack/ansible-role-vagrant/master)](https://gitlab.com/alvistack/ansible-role-vagrant/-/pipelines)
 [![GitHub release](https://img.shields.io/github/release/alvistack/ansible-role-vagrant.svg)](https://github.com/alvistack/ansible-role-vagrant/releases)
 [![GitHub license](https://img.shields.io/github/license/alvistack/ansible-role-vagrant.svg)](https://github.com/alvistack/ansible-role-vagrant/blob/master/LICENSE)
 [![Ansible Role](https://img.shields.io/badge/galaxy-alvistack.vagrant-blue.svg)](https://galaxy.ansible.com/alvistack/vagrant)
