@@ -20,5 +20,5 @@ _rpm_key:
     state: "present"
 
 _yum:
-  "2.2.10":
-    - { state: "latest", name: "https://releases.hashicorp.com/vagrant/2.2.10/vagrant_2.2.10_x86_64.rpm" }
+  "2.2.14":
+    - { state: "latest", name: "https://releases.hashicorp.com/vagrant/2.2.14/vagrant_2.2.14_x86_64.rpm" }
