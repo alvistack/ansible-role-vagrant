@@ -17,14 +17,18 @@
 # vagrant version.
 vagrant_version: "2.2.14"
 
-# VAGRANT_DEFAULT_PROVIDER.
+# This configures the default provider Vagrant will use.
 vagrant_default_provider: "libvirt"
 
-# VAGRANT_EXPERIMENTAL.
+# Some features that aren't ready for release can be enabled through this
+# feature flag.
 vagrant_experimental: "1"
 
-# VAGRANT_FORCE_COLOR.
+# If this is set to any value, then Vagrant will force colored output, even
+# if it detected that there is no TTY or the current environment does not
+# support it.
 vagrant_force_color: "1"
 
-# VAGRANT_NO_PARALLEL.
+# If this is set, Vagrant will not perform any parallel operations (such as
+# parallel box provisioning). All operations will be performed in serial.
 vagrant_no_parallel: "1"
