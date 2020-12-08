@@ -16,3 +16,15 @@
 
 # vagrant version.
 vagrant_version: "2.2.14"
+
+# VAGRANT_DEFAULT_PROVIDER.
+vagrant_default_provider: "libvirt"
+
+# VAGRANT_EXPERIMENTAL.
+vagrant_experimental: "1"
+
+# VAGRANT_FORCE_COLOR.
+vagrant_force_color: "1"
+
+# VAGRANT_NO_PARALLEL.
+vagrant_no_parallel: "1"
