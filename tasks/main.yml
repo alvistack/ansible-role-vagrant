@@ -45,22 +45,6 @@
         - "."
   ignore_errors: true
 
-- name: groupadd
-  group:
-    name: "vagrant"
-    system: false
-    state: "present"
-
-- name: useradd
-  user:
-    name: "vagrant"
-    group: "vagrant"
-    home: "/home/vagrant"
-    shell: "/bin/bash"
-    system: false
-    create_home: false
-    state: "present"
-
 - name: prepare directories
   file:
     dest: "{{ item.dest }}"
@@ -71,9 +55,6 @@
   loop:
     - { dest: "/etc/bash_completion.d" }
     - { dest: "/etc/profile.d" }
-    - { dest: "/home/vagrant", owner: "vagrant", group: "vagrant" }
-    - { dest: "/home/vagrant/.cache", owner: "vagrant", group: "vagrant" }
-    - { dest: "/home/vagrant/.vagrant.d/boxes", owner: "vagrant", group: "vagrant" }
 
 - name: copy templates
   template:
