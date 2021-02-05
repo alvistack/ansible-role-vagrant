@@ -19,6 +19,12 @@ _apt_key:
     id: "91A6E7F85D05C65630BEF18951852D87348FFC4C"
     state: "present"
 
+_apt_download:
+  "2.2.14":
+    - url: "https://releases.hashicorp.com/vagrant/2.2.14/vagrant_2.2.14_x86_64.deb"
+      dest: "/var/cache/ansible/b5a522d29aee754df41901b227e2ca276bbfe435df6d91a11a54362a04a561da/vagrant_2.2.14_x86_64.deb"
+      checksum: "sha256:b5a522d29aee754df41901b227e2ca276bbfe435df6d91a11a54362a04a561da"
+
 _apt:
   "2.2.14":
-    - { state: "present", deb: "https://releases.hashicorp.com/vagrant/2.2.14/vagrant_2.2.14_x86_64.deb" }
+    - { state: "present", name: "vagrant=1:2.2.14" }

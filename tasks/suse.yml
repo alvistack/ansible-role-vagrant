@@ -34,14 +34,46 @@
   register: result
   until: result is succeeded
 
+- name: prepare directories
+  file:
+    dest: "{{ item.dest | dirname }}"
+    owner: "{{ item.owner | default('root') }}"
+    group: "{{ item.group | default('root') }}"
+    mode: "{{ item.mode | default('0755') }}"
+    state: "{{ item.state | default('directory') }}"
+  loop: "{{ _rpm_download[vagrant_version] }}"
+  register: file_result
+
+- name: download archive
+  vars:
+    ansible_python_interpreter: "python3"
+  get_url:
+    url: "{{ item.url }}"
+    dest: "{{ item.dest }}"
+    checksum: "{{ item.checksum }}"
+    mode: "{{ item.mode | default('0644') }}"
+    timeout: 300
+  loop: "{{ _rpm_download[vagrant_version] }}"
+  when: file_result is changed
+  register: result
+  until: result is succeeded
+
+- name: zypper install *.rpm
+  shell: |
+    set -euo pipefail
+    exec &> >(tee -a {{ item.dest }}.log)
+    zypper --no-gpg-checks install -y {{ item.dest }}
+  args:
+    executable: "/bin/bash"
+    creates: "{{ item.dest }}.log"
+  loop: "{{ _rpm_download[vagrant_version] }}"
+
 - name: zypper install
   vars:
     ansible_python_interpreter: "python3"
   zypper:
     name: "{{ item.name }}"
     state: "{{ item.state }}"
-    disable_gpg_check: true
-    extra_args: "--allow-vendor-change"
   loop: "{{ _zypper[vagrant_version] }}"
   register: result
   until: result is succeeded
