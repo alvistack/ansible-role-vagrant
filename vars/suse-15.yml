@@ -15,13 +15,13 @@
 # limitations under the License.
 
 _rpm_key:
-  - key: "http://keybase.io/hashicorp/pgp_keys.asc"
+  - key: "https://keybase.io/hashicorp/pgp_keys.asc"
     fingerprint: "91A6E7F85D05C65630BEF18951852D87348FFC4C"
     state: "present"
 
 _rpm_download:
   "2.2.14":
-    - url: "http://releases.hashicorp.com/vagrant/2.2.14/vagrant_2.2.14_x86_64.rpm"
+    - url: "https://releases.hashicorp.com/vagrant/2.2.14/vagrant_2.2.14_x86_64.rpm"
       dest: "/var/cache/ansible/be06ce2fa17ad45cdb2fa3c92054194a48b49f46c26ecc2aa1ff928cf861090a/vagrant_2.2.14_x86_64.rpm"
       checksum: "sha256:be06ce2fa17ad45cdb2fa3c92054194a48b49f46c26ecc2aa1ff928cf861090a"
 
