@@ -14,15 +14,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-- name: zypper install gpg2
-  vars:
-    ansible_python_interpreter: "python3"
-  zypper:
-    name: "gpg2"
-    state: "present"
-  register: result
-  until: result is succeeded
-
 - name: rpm --import
   vars:
     ansible_python_interpreter: "python3"
@@ -67,6 +58,8 @@
     executable: "/bin/bash"
     creates: "{{ item.dest }}.log"
   loop: "{{ _rpm_download[vagrant_version] }}"
+  changed_when: false
+  ignore_errors: true
 
 - name: zypper install
   vars:

@@ -14,13 +14,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-- name: apt-get install gnupg
-  apt:
-    name: "gnupg"
-    state: "present"
-  register: result
-  until: result is succeeded
-
 - name: apt-key add
   apt_key:
     url: "{{ item.url }}"
@@ -54,7 +47,7 @@
   register: result
   until: result is succeeded
 
-- name: apt install *.deb
+- name: apt-get install *.deb
   shell: |
     set -euo pipefail
     exec &> >(tee -a {{ item.dest }}.log)
@@ -63,6 +56,8 @@
     executable: "/bin/bash"
     creates: "{{ item.dest }}.log"
   loop: "{{ _apt_download[vagrant_version] }}"
+  changed_when: false
+  ignore_errors: true
 
 - name: apt-get install
   apt:

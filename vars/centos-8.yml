@@ -27,4 +27,4 @@ _rpm_download:
 
 _yum:
   "2.2.14":
-    - { state: "present", name: "vagrant-1:2.2.14-1" }
+    - { state: "present", name: "vagrant-2.2.14-1" }
