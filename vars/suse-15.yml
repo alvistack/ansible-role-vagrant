@@ -23,7 +23,7 @@ _rpm_download:
   "2.2.14":
     - url: "https://releases.hashicorp.com/vagrant/2.2.14/vagrant_2.2.14_x86_64.rpm"
       dest: "/var/cache/ansible/be06ce2fa17ad45cdb2fa3c92054194a48b49f46c26ecc2aa1ff928cf861090a/vagrant_2.2.14_x86_64.rpm"
-      checksum: "sha256:be06ce2fa17ad45cdb2fa3c92054194a48b49f46c26ecc2aa1ff928cf861090a"
+      sha256sum: "be06ce2fa17ad45cdb2fa3c92054194a48b49f46c26ecc2aa1ff928cf861090a"
 
 _zypper:
   "2.2.14":
