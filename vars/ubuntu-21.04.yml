@@ -1,0 +1,30 @@
+---
+
+# (c) Wong Hoi Sing Edison <hswong3i@pantarei-design.com>
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+_apt_key:
+  - url: "https://keybase.io/hashicorp/pgp_keys.asc"
+    id: "91A6E7F85D05C65630BEF18951852D87348FFC4C"
+    state: "present"
+
+_deb_download:
+  "2.2.15":
+    - url: "https://releases.hashicorp.com/vagrant/2.2.15/vagrant_2.2.15_x86_64.deb"
+      dest: "/var/cache/ansible/45d82f7a5b8d2d1ec7145a01931832b8c1990f2e9125a63c01accf30d87e20a2/vagrant_2.2.15_x86_64.deb"
+      sha256sum: "45d82f7a5b8d2d1ec7145a01931832b8c1990f2e9125a63c01accf30d87e20a2"
+
+_apt:
+  "2.2.15":
+    - { state: "present", name: "vagrant=1:2.2.15" }
