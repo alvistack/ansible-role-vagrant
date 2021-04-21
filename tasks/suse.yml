@@ -70,3 +70,9 @@
     path: "/opt/vagrant/embedded/lib/libreadline.so.7"
     mode: "0644"
     state: "absent"
+
+- name: ln -s /usr/bin/install /bin/install
+  file:
+    src: "/usr/bin/install"
+    dest: "/bin/install"
+    state: "link"
