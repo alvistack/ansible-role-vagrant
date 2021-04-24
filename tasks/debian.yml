@@ -41,7 +41,7 @@
   register: result
   until: result is succeeded
 
-- name: apt-get install *.deb
+- name: apt-get install
   shell: |
     set -euo pipefail
     exec &> >(tee -a {{ item.dest }}.log)

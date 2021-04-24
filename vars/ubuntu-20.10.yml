@@ -16,7 +16,7 @@
 
 _apt_key:
   - url: "https://keybase.io/hashicorp/pgp_keys.asc"
-    id: "91A6E7F85D05C65630BEF18951852D87348FFC4C"
+    id: "C874011F0AB405110D02105534365D9472D7468F"
     state: "present"
 
 _deb_download:
