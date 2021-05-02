@@ -15,7 +15,7 @@
 # limitations under the License.
 
 # vagrant version.
-vagrant_version: "2.2.15"
+vagrant_version: "2.2.16"
 
 # This configures the default provider Vagrant will use.
 vagrant_default_provider: "libvirt"
