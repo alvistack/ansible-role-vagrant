@@ -51,7 +51,7 @@
     creates: "{{ item.dest }}.log"
   loop: "{{ _deb_download[vagrant_version] }}"
   changed_when: false
-  ignore_errors: true
+  failed_when: false
 
 - name: apt-get install
   apt:
