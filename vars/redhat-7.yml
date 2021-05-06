@@ -20,11 +20,11 @@ _rpm_key:
     state: "present"
 
 _rpm_download:
-  "2.2.15":
-    - url: "https://releases.hashicorp.com/vagrant/2.2.15/vagrant_2.2.15_x86_64.rpm"
-      dest: "/var/cache/ansible/a32c4f6cfe75d6073b0490121a5d4b908ea87ba2eaed02eebbb93f3d4b500872/vagrant_2.2.15_x86_64.rpm"
-      sha256sum: "a32c4f6cfe75d6073b0490121a5d4b908ea87ba2eaed02eebbb93f3d4b500872"
+  "2.2.16":
+    - url: "https://releases.hashicorp.com/vagrant/2.2.16/vagrant_2.2.16_x86_64.rpm"
+      dest: "/var/cache/ansible/854ffe3cec5282469d17d0cd0506578c66076b9057e5c463b9d37bafcefab76f/vagrant_2.2.16_x86_64.rpm"
+      sha256sum: "854ffe3cec5282469d17d0cd0506578c66076b9057e5c463b9d37bafcefab76f"
 
 _yum:
-  "2.2.15":
-    - { state: "present", name: "vagrant-2.2.15-1" }
+  "2.2.16":
+    - { state: "present", name: "vagrant-2.2.16-1" }
