@@ -24,4 +24,5 @@ _apt_repository:
     state: "present"
 
 _apt:
-  - { state: "present", name: "vagrant" }
+  - { state: "latest", name: "bash-completion" }
+  - { state: "latest", name: "vagrant" }
