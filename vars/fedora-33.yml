@@ -15,16 +15,20 @@
 # limitations under the License.
 
 _rpm_key:
-  - key: "https://keybase.io/hashicorp/pgp_keys.asc"
-    fingerprint: "C874011F0AB405110D02105534365D9472D7468F"
+  - key: "https://rpm.releases.hashicorp.com/gpg"
+    fingerprint: "E8A032E094D8EB4EA189D270DA418C88A3219F7B"
     state: "present"
 
-_rpm_download:
-  "2.2.16":
-    - url: "https://releases.hashicorp.com/vagrant/2.2.16/vagrant_2.2.16_x86_64.rpm"
-      dest: "/var/cache/ansible/854ffe3cec5282469d17d0cd0506578c66076b9057e5c463b9d37bafcefab76f/vagrant_2.2.16_x86_64.rpm"
-      sha256sum: "854ffe3cec5282469d17d0cd0506578c66076b9057e5c463b9d37bafcefab76f"
+_yum_repository:
+  - file: "hashicorp"
+    name: "hashicorp"
+    description: "Hashicorp Stable - x86_64"
+    baseurl: "https://rpm.releases.hashicorp.com/fedora/33/x86_64/stable"
+    enabled: true
+    priority: "2"
+    gpgcheck: true
+    gpgkey: "https://rpm.releases.hashicorp.com/gpg"
+    state: "present"
 
 _yum:
-  "2.2.16":
-    - { state: "present", name: "vagrant-2.2.16-1" }
+  - { state: "latest", name: "vagrant" }
