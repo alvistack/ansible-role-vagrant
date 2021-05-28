@@ -14,9 +14,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# vagrant version.
-vagrant_version: "2.2.16"
-
 # This configures the default provider Vagrant will use.
 vagrant_default_provider: "libvirt"
 

@@ -23,40 +23,19 @@
   register: result
   until: result is succeeded
 
-- name: download archive
-  shell: |
-    set -euo pipefail
-    TMP_DIR="$(mktemp -d)" \
-      && cd $TMP_DIR \
-      && mkdir -p ./{{ item.dest | dirname }} \
-      && curl -skL -m 300 {{ item.url }} > ./{{ item.dest }} \
-      && echo -n "{{ item.sha256sum }} ./{{ item.dest }}" | sha256sum -c - \
-      && mkdir -p {{ item.dest | dirname }} \
-      && mv ./{{ item.dest }} {{ item.dest }} \
-      && rm -rf $TMP_DIR
-  args:
-    executable: "/bin/bash"
-    creates: "{{ item.dest | dirname }}"
-  loop: "{{ _deb_download[vagrant_version] }}"
+- name: apt-add-repository
+  apt_repository:
+    repo: "{{ item.repo }}"
+    state: "{{ item.state }}"
+    mode: "{{ item.mode | default('0644') }}"
+  loop: "{{ _apt_repository }}"
   register: result
   until: result is succeeded
-
-- name: apt-get install
-  shell: |
-    set -euo pipefail
-    exec &> >(tee -a {{ item.dest }}.log)
-    apt install -y {{ item.dest }}
-  args:
-    executable: "/bin/bash"
-    creates: "{{ item.dest }}.log"
-  loop: "{{ _deb_download[vagrant_version] }}"
-  changed_when: false
-  failed_when: false
 
 - name: apt-get install
   apt:
     name: "{{ item.name }}"
     state: "{{ item.state }}"
-  loop: "{{ _apt[vagrant_version] }}"
+  loop: "{{ _apt }}"
   register: result
   until: result is succeeded

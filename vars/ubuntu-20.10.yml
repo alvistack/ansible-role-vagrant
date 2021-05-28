@@ -15,16 +15,14 @@
 # limitations under the License.
 
 _apt_key:
-  - url: "https://keybase.io/hashicorp/pgp_keys.asc"
-    id: "C874011F0AB405110D02105534365D9472D7468F"
+  - url: "https://apt.releases.hashicorp.com/gpg"
+    id: "E8A032E094D8EB4EA189D270DA418C88A3219F7B"
     state: "present"
 
-_deb_download:
-  "2.2.16":
-    - url: "https://releases.hashicorp.com/vagrant/2.2.16/vagrant_2.2.16_x86_64.deb"
-      dest: "/var/cache/ansible/a2fcd1fcc77306c997b2667b5ff4bbc23d01ba15a63bc2c80a9262e3e44a92a1/vagrant_2.2.16_x86_64.deb"
-      sha256sum: "a2fcd1fcc77306c997b2667b5ff4bbc23d01ba15a63bc2c80a9262e3e44a92a1"
+_apt_repository:
+  - repo: "deb [arch=amd64] https://apt.releases.hashicorp.com groovy main"
+    state: "present"
 
 _apt:
-  "2.2.16":
-    - { state: "present", name: "vagrant=1:2.2.16" }
+  - { state: "latest", name: "bash-completion" }
+  - { state: "latest", name: "vagrant" }

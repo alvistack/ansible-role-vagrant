@@ -25,35 +25,19 @@
   register: result
   until: result is succeeded
 
-- name: download archive
-  shell: |
-    set -euo pipefail
-    TMP_DIR="$(mktemp -d)" \
-      && cd $TMP_DIR \
-      && mkdir -p ./{{ item.dest | dirname }} \
-      && curl -skL -m 300 {{ item.url }} > ./{{ item.dest }} \
-      && echo -n "{{ item.sha256sum }} ./{{ item.dest }}" | sha256sum -c - \
-      && mkdir -p {{ item.dest | dirname }} \
-      && mv ./{{ item.dest }} {{ item.dest }} \
-      && rm -rf $TMP_DIR
-  args:
-    executable: "/bin/bash"
-    creates: "{{ item.dest | dirname }}"
-  loop: "{{ _rpm_download[vagrant_version] }}"
-  register: result
-  until: result is succeeded
-
-- name: zypper install
-  shell: |
-    set -euo pipefail
-    exec &> >(tee -a {{ item.dest }}.log)
-    zypper --no-gpg-checks install -y {{ item.dest }}
-  args:
-    executable: "/bin/bash"
-    creates: "{{ item.dest }}.log"
-  loop: "{{ _rpm_download[vagrant_version] }}"
-  changed_when: false
-  failed_when: false
+- name: yum-config-manager --add-repo
+  yum_repository:
+    file: "{{ item.file }}"
+    name: "{{ item.name }}"
+    description: "{{ item.description }}"
+    baseurl: "{{ item.baseurl }}"
+    enabled: "{{ item.enabled }}"
+    priority: "{{ item.priority }}"
+    gpgcheck: "{{ item.gpgcheck }}"
+    gpgkey: "{{ item.gpgkey }}"
+    state: "{{ item.state }}"
+    reposdir: "{{ item.reposdir | default('/etc/zypp/repos.d') }}"
+  loop: "{{ _yum_repository }}"
 
 - name: zypper install
   vars:
@@ -61,18 +45,7 @@
   zypper:
     name: "{{ item.name }}"
     state: "{{ item.state }}"
-  loop: "{{ _zypper[vagrant_version] }}"
+    extra_args: "--allow-vendor-change"
+  loop: "{{ _zypper }}"
   register: result
   until: result is succeeded
-
-- name: rm /opt/vagrant/embedded/lib/libreadline.so.7
-  file:
-    path: "/opt/vagrant/embedded/lib/libreadline.so.7"
-    mode: "0644"
-    state: "absent"
-
-- name: ln -s /usr/bin/install /bin/install
-  file:
-    src: "/usr/bin/install"
-    dest: "/bin/install"
-    state: "link"
