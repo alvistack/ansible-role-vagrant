@@ -85,3 +85,17 @@
   loop:
     - { dest: "/etc/bash_completion.d/vagrant" }
     - { dest: "/etc/profile.d/vagrant.sh" }
+
+- name: vagrant plugin update
+  environment:
+    PATH: "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+  shell: |
+    set -euxo pipefail
+    ! test -f /bin/install && ln -fs /usr/bin/install /bin/install
+    test -f /usr/bin/ld.gold && ln -fs /usr/bin/ld.gold /usr/bin/ld
+    vagrant plugin update
+  args:
+    executable: "/bin/bash"
+  register: result
+  until: result is succeeded
+  changed_when: result is not succeeded
