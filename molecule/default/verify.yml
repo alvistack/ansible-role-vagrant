@@ -21,6 +21,6 @@
     - name: vagrant --version
       environment:
         PATH: "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
-      command: vagrant --version
+      ansible.builtin.command: vagrant --version
       register: result
       changed_when: result is not succeeded
