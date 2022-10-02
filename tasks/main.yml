@@ -89,11 +89,12 @@
 - name: vagrant plugin update
   environment:
     PATH: "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
-  ansible.builtin.shell: |
-    set -euxo pipefail
-    ! test -f /bin/install && ln -fs /usr/bin/install /bin/install
-    test -f /usr/bin/ld.gold && ln -fs /usr/bin/ld.gold /usr/bin/ld
-    vagrant plugin update
+  ansible.builtin.shell:
+    cmd: |
+      set -euxo pipefail
+      ! test -f /bin/install && ln -fs /usr/bin/install /bin/install
+      test -f /usr/bin/ld.gold && ln -fs /usr/bin/ld.gold /usr/bin/ld
+      vagrant plugin update
   args:
     executable: "/bin/bash"
   register: result
