@@ -20,8 +20,6 @@
   become: true
   tasks:
     - name: vagrant --version
-      environment:
-        PATH: "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
       ansible.builtin.command:
         cmd: vagrant --version
       register: result
