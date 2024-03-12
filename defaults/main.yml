@@ -15,7 +15,7 @@
 # limitations under the License.
 
 # This configures the default provider Vagrant will use.
-vagrant_default_provider: "libvirt"
+vagrant_default_provider: libvirt
 
 # Some features that aren't ready for release can be enabled through this
 # feature flag.

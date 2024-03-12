@@ -1,5 +1,4 @@
 ---
-
 # Copyright 2024 Wong Hoi Sing Edison <hswong3i@pantarei-design.com>
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,7 +14,7 @@
 # limitations under the License.
 
 - name: include default variables
-  ansible.builtin.include_vars: "../vars/main.yml"
+  ansible.builtin.include_vars: ../vars/main.yml
 
 - name: include release specific variables
   ansible.builtin.include_vars: "{{ _loop_var }}"
@@ -32,7 +31,7 @@
         - "{{ ansible_os_family | lower }}-{{ ansible_distribution_major_version | lower }}.yml"
         - "{{ ansible_os_family | lower }}.yml"
       paths:
-        - "../vars"
+        - ../vars
       skip: true
 
 - name: include release specific tasks
@@ -50,7 +49,7 @@
         - "{{ ansible_os_family | lower }}-{{ ansible_distribution_major_version | lower }}.yml"
         - "{{ ansible_os_family | lower }}.yml"
       paths:
-        - "."
+        - .
       skip: true
 
 - name: prepare directories
@@ -61,7 +60,7 @@
     mode: "{{ item.mode | default('0755') }}"
     state: "{{ item.state | default('directory') }}"
   loop:
-    - { dest: "/etc/profile.d" }
+    - { dest: /etc/profile.d }
 
 - name: copy templates
   ansible.builtin.template:
@@ -71,7 +70,7 @@
     group: "{{ item.group | default('root') }}"
     mode: "{{ item.mode | default('0644') }}"
   loop:
-    - { dest: "/etc/profile.d/vagrant.sh" }
+    - { dest: /etc/profile.d/vagrant.sh }
 
 - name: prepare files
   ansible.builtin.file:
@@ -81,11 +80,11 @@
     mode: "{{ item.mode | default('0644') }}"
     state: "{{ item.state | default('file') }}"
   loop:
-    - { dest: "/etc/profile.d/vagrant.sh" }
+    - { dest: /etc/profile.d/vagrant.sh }
 
 - name: vagrant plugin update
   environment:
-    PATH: "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+    PATH: /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
   ansible.builtin.shell:
     cmd: |
       set -euxo pipefail
@@ -93,7 +92,7 @@
       test -f /usr/bin/ld.gold && ln -fs /usr/bin/ld.gold /usr/bin/ld
       vagrant plugin update
   args:
-    executable: "/bin/bash"
+    executable: /bin/bash
   register: result
   until: result is succeeded
   changed_when: result is not succeeded
