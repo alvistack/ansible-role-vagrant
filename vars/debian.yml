@@ -26,4 +26,5 @@ _apt_repository:
     state: present
 
 _apt:
+  - { state: latest, name: hcp }
   - { state: latest, name: vagrant }
